@@ -8,8 +8,8 @@ std::vector<Token> get_tokens_from_source(const std::string &source) {
     return scanner.scan_tokens();
 }
 
-TEST(Scanner, scan__single_character_tokens) {
-    std::string source = "()  {}\t,\r.    -\n+ ;/*";
+TEST(Scanner, scan_single_character_tokens) {
+    std::string source = "()  {}\t,\r.    -\n+ ;*/";
     std::vector<Token> tokens = get_tokens_from_source(source);
 
     std::vector<Virtel::TokenType> actual_tokens = {
@@ -17,8 +17,8 @@ TEST(Scanner, scan__single_character_tokens) {
         LEFT_BRACE, RIGHT_BRACE,
         COMMA, DOT,
         MINUS, PLUS,
-        SEMICOLON, SLASH,
-        STAR, END_OF_FILE
+        SEMICOLON, STAR,
+        SLASH, END_OF_FILE
     };
 
     EXPECT_EQ(tokens.size(), actual_tokens.size());
@@ -71,6 +71,34 @@ TEST(Scanner, scan_keywords_tokens) {
         END_OF_FILE
     };
     
+    EXPECT_EQ(tokens.size(), actual_tokens.size());
+    
+    for (std::size_t i{}; i < tokens.size(); ++i)
+        EXPECT_EQ(tokens[i].get_token(), actual_tokens[i]);
+}
+
+TEST(Scanner, scan_single_line_comments) {
+    std::string source = "123 // + - ;";
+    std::vector<Token> tokens = get_tokens_from_source(source);
+    
+    std::vector<TokenType> actual_tokens = {
+        NUMBER, END_OF_FILE
+    };
+
+    EXPECT_EQ(tokens.size(), actual_tokens.size());
+    
+    for (std::size_t i{}; i < tokens.size(); ++i)
+        EXPECT_EQ(tokens[i].get_token(), actual_tokens[i]);
+}
+
+TEST(Scanner, scan_multiple_lines_comments) {
+    std::string source = "\"hello\" /* + - ; \n*/";
+    std::vector<Token> tokens = get_tokens_from_source(source);
+    
+    std::vector<TokenType> actual_tokens = {
+        STRING, END_OF_FILE
+    };
+
     EXPECT_EQ(tokens.size(), actual_tokens.size());
     
     for (std::size_t i{}; i < tokens.size(); ++i)

@@ -7,7 +7,7 @@ CXXBASEFLAGS = --std=c++17 -MMD
 CXXRELEASEFLAGS = -O2
 CXXDEBUGFLAGS = -g -O0 -DDEBUG
 
-SRC = src/main.cpp src/runner.cpp src/scanner.cpp src/token.cpp src/debug.cpp
+SRC = src/main.cpp src/runner.cpp src/scanner.cpp src/token.cpp
 TESTS = tests/*.cpp
 OBJECTS = $(SRC:.cpp=.o)
 

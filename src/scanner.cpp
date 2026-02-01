@@ -109,7 +109,8 @@ void Scanner::number() {
 void Scanner::identifier() {
     while (is_alpha_numeric(peek())) advance();
     
-    std::string text = source_.substr(start_, current_);
+    std::string text = source_.substr(start_, current_ - start_);
+    
     TokenType type = IDENTIFIER;
     if (keywords_.count(text)) {
         type = keywords_.at(text);
@@ -147,15 +148,17 @@ void Scanner::scan_token() {
             if (match('/')) {
                 while (peek() != '\n' && !is_at_end()) advance();
             } else if (match('*')) {
+                bool closed{};
                 while (!is_at_end()) {
                     if (peek() == '\n') line_++;
                     if (peek() == '*' && peek_next() == '/') {
                         advance(); advance();
+                        closed = 1;
                         break;
                     }
                     advance();
                 }
-                if (is_at_end()) {
+                if (!closed) {
                     Runner::error(line_, "comments are not closed");
                 }
             } else {
@@ -171,7 +174,7 @@ void Scanner::scan_token() {
         default:
             if (std::isdigit(c)) {
                 number();
-            } else if (std::isalpha(c)) {
+            } else if (is_alpha(c)) {
                 identifier(); 
             } else {
                 Runner::error(line_, "Unexpected character.");

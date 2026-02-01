@@ -6,10 +6,7 @@ project(virtel VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(virtel
-    src/main.cpp
-    src/debug.cpp
-    src/runner.cpp
-    src/scanner.cpp
-    src/token.cpp
-)
+enable_testing()
+
+add_subdirectory("src")
+add_subdirectory("tests")
