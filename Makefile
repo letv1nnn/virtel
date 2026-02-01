@@ -4,7 +4,7 @@
 CXX = g++
 CXXFLAGS = --std=c++17 -O2 -MMD
 
-SRC = src/main.cpp src/runner.cpp
+SRC = src/main.cpp src/runner.cpp src/scanner.cpp src/token.cpp
 OBJECTS = $(SRC:.cpp=.o)
 BIN = virtel
 

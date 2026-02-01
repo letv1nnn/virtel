@@ -7,6 +7,10 @@
 *.o
 *.obj
 
+# Swaped files
+*.swo
+*.swp
+
 # Precompiled Headers
 *.gch
 *.pch

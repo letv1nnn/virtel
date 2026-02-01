@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../include/common.hpp"
 #include <fstream>
+#include "common.hpp"
 
 class Runner {
 public:
@@ -13,9 +13,9 @@ public: // runners
     static void run_source(const std::string &source);
 
 public: // Error handling
-    static void error(int line, const char *message);
+    static void error(std::size_t line, const char *message);
 
 private:
-    static void report(int line, const char *where, const char *message);
+    static void report(std::size_t line, const char *where, const char *message);
 };
 
