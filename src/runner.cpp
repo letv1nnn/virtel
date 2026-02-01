@@ -25,20 +25,17 @@ void Runner::run_file(const char *path) {
 }
 
 void Runner::run_repl() {
-    std::cout << "virtel version: " << VIRTEL_VERSION << std::endl;
-
     std::string line;
     while (std::cout << "> " && std::getline(std::cin, line)) {
-#ifdef DEBUG
-        std::cout << line << '\n';
-#endif
         run_source(line);
         Runner::had_error = 0;
     }
 }
 
-void Runner::run_source(const std::string &source) {
 
+void Runner::run_source(const std::string &source) {
+    Scanner scanner(source);
+    std::vector<Token> tokens = scanner.scan_tokens();
 }
 
 void Runner::error(std::uint64_t line, const char *message) {

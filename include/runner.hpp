@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include "common.hpp"
+#include "scanner.hpp"
 
 namespace Virtel {
 

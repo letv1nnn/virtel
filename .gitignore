@@ -24,5 +24,6 @@
 *.exe
 *.out
 
+build/
 virtel
 virtel_tests
