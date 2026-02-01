@@ -1,5 +1,7 @@
 #include "../include/runner.hpp"
 
+namespace Virtel {
+
 bool Runner::had_error{};
 
 void Runner::run_file(const char *path) {
@@ -47,3 +49,4 @@ void Runner::report(std::uint64_t line, const char *where, const char *message) 
     std::printf("[line %ld] ERROR %s: %s", line, where, message); 
 }
 
+}

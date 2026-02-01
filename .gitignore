@@ -23,4 +23,6 @@
 # Executables
 *.exe
 *.out
+
 virtel
+virtel_tests

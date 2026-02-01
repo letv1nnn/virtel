@@ -3,6 +3,8 @@
 #include <fstream>
 #include "common.hpp"
 
+namespace Virtel {
+
 class Runner {
 public:
     static bool had_error;
@@ -19,3 +21,4 @@ private:
     static void report(std::size_t line, const char *where, const char *message);
 };
 
+}

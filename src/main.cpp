@@ -5,9 +5,9 @@ int main(int argc, char **argv) {
         std::cout << "Usage: virtel [script]" << std::endl;
         return 0;
     } else if (argc == 2) {
-        Runner::run_file(argv[1]);
+        Virtel::Runner::run_file(argv[1]);
     } else {
-        Runner::run_repl();
+        Virtel::Runner::run_repl();
     }
     return 0;
 }
