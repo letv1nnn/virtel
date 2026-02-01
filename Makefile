@@ -2,23 +2,26 @@
 # `/usr/bin/time make (-j 4)` to check how long does it take to assemble the project. 
 
 CXX = g++
-CXXFLAGS = --std=c++17 -MMD --optimize=2
+CXXFLAGS = --std=c++17 -O2 -MMD
 
-SRC = src/main.cpp
+SRC = src/main.cpp src/runner.cpp
 OBJECTS = $(SRC:.cpp=.o)
 BIN = virtel
 
-virtel: $(OBJECTS)
+$(BIN): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(BIN)
 
-run: build
+debug: $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $(OBJECTS) -D DEBUG -o $(BIN)
+
+run: $(BIN)
 	./$(BIN)
 
-%.o: $(SRC)
+%.o: %.cpp
 	$(CXX) $(CXXFALGS) -c $< -o $@
 
 clean:
-	rm -f virtel *.o *.d
+	rm -f $(BIN) $(OBJECTS) *.d
 
 # include all dependencies, so make could react on any changes inside of .h/.hpp
 -include *.d

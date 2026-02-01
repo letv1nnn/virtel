@@ -1,6 +1,14 @@
-#include <iostream>
+#include "../include/runner.hpp"
 
 int main(int argc, char **argv) {
-    std::cout << "la la la leo, la la la lava\n";
+    if (argc > 2) {
+        std::cout << "Usage: virtel [script]" << std::endl;
+        return 0;
+    } else if (argc == 2) {
+        Runner::run_file(argv[1]);
+    } else {
+        Runner::run_repl();
+    }
     return 0;
 }
+
