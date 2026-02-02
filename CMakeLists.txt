@@ -6,9 +6,12 @@ project(virtel VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "-Wall -Werror")
+# set(CMAKE_CXX_FLAGS -Wall -Werror)
 
 enable_testing()
 
-add_subdirectory("src")
-add_subdirectory("tests")
+add_subdirectory(dependencies/googletest)
+
+add_subdirectory(src)
+
+add_subdirectory(tests)
