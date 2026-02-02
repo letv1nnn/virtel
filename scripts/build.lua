@@ -23,6 +23,10 @@ tasks["build"] = function()
     run('cmake --build build')
 end
 
+tasks["run"] = function()
+    run('./build/src/virtel')
+end
+
 tasks["test"] = function()
     run('ctest --output-on-failure --test-dir build')
 end

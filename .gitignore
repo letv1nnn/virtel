@@ -27,3 +27,4 @@
 build/
 virtel
 virtel_tests
+dependencies/
