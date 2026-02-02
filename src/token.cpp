@@ -25,5 +25,22 @@ std::string Token::literal_to_string() const {
     }
 }
 
+bool Token::same_literals(TokenType type, const std::any &other_literal) const {
+    if (!literal_.has_value() && !other_literal.has_value()) return true;
+    if (literal_.has_value() != other_literal.has_value()) return false;
+    if (literal_.type() != other_literal.type()) return false;
+
+    switch (type) {
+        case TokenType::STRING:
+            return std::any_cast<const std::string &>(literal_) ==
+                   std::any_cast<const std::string &>(other_literal);
+        case TokenType::NUMBER:
+            return std::any_cast<double>(literal_) ==
+                   std::any_cast<double>(other_literal);
+        default:
+            return true;
+    }
+}
+
 }
 

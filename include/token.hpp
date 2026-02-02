@@ -36,12 +36,14 @@ public:
     Token(TokenType type, std::string lexeme, std::uint64_t line);
     Token(TokenType type, std::string lexeme, std::any literal, std::uint64_t line);
 
-    TokenType get_token() const { return type_; }
+    TokenType get_type() const { return type_; }
     std::string get_lexeme() const { return lexeme_; }
     std::any get_literal() const { return literal_; }
     std::uint64_t get_line() const { return line_; }
 
     std::string to_string() const;
     std::string literal_to_string() const;
+
+    bool same_literals(TokenType type, const std::any &other) const;
 };
 }

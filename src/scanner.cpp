@@ -87,9 +87,10 @@ void Scanner::string() {
         Runner::error(line_, "Unterminated string.");
         return;
     }
-
+    
     advance();
-    std::string value = source_.substr(start_ + 1, current_ - 1);
+
+    std::string value = source_.substr(start_ + 1, (current_ - 1) - (start_ + 1));
     add_token(STRING, value);
 }
 
@@ -101,8 +102,7 @@ void Scanner::number() {
         while (std::isdigit(peek())) advance();
     }
     
-    double value = std::stod(source_.substr(start_, current_));
-
+    double value = std::stod(source_.substr(start_, current_ - start_));
     add_token(NUMBER, value);
 }
 
