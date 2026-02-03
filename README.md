@@ -1,6 +1,6 @@
 # VIRTEL
 
-I've read ["Crafting Interpreters"]("https://craftinginterpreters.com/") book by Bob Nystrom and rewrite the Lox interpreter in C++.
+I've read [Crafting Interpreters]("https://craftinginterpreters.com/") book by Bob Nystrom and rewrite the Lox interpreter in C++.
 
 ## Build & Run
 
