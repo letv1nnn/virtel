@@ -2,22 +2,56 @@
 
 I've read ["Crafting Interpreters"]("https://craftinginterpreters.com/") book by Bob Nystrom and rewrite the Lox interpreter in C++.
 
-## Build
+## Build & Run
 
->NOTE: I've used Lua for scripting, so you need the Lua interpreter or you can use cmake directly.
+### Prerequisites
+- CMake >= 3.16
+- GCC or Clang
+- Lua (for build scripts) (optional, since you can run raw cmake)
 
+#### ***Using Lua scripts***
+
+>NOTE: To see all available scripts, run the following command: `lua scripts/build.lua`.
+
+#### Build
 ```sh
-# build the binary
-lua scripts/build.lua configure
-lua scripts/build.lua build 
+lua scripts/build.lua rebuild # to configure and build the project 
 ```
 
+#### Run
 ```sh
-# run virtel interpreter (repl)
 lua scripts/build.lua run
 ```
 
+#### Clean
 ```sh
-# remove build dir, (clean)
 lua scripts/build.lua clean
+```
+
+#### Test
+```sh
+lua scripts/build.lua test
+```
+
+***Raw CMake***
+
+#### Build
+```sh
+cmake -S . -B build # to configure
+cmake --build build # to build the project
+```
+
+#### Run
+```sh
+./build/src/virtel
+```
+
+#### Clean
+```sh
+rm -rf build # from the root directory
+```
+
+#### Test
+```sh
+ctest --output-on-failure --test-dir build
 ```

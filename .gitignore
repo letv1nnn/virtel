@@ -24,7 +24,10 @@
 *.exe
 *.out
 
+# CMake
 build/
+
+# Other binaries and dependencies
+dependencies/
 virtel
 virtel_tests
-dependencies/

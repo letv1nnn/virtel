@@ -9,9 +9,9 @@ target_include_directories(virtel_tests
 )
 
 target_link_libraries(virtel_tests
-    PRIVATE
-        gtest
-        gtest_main
+    virtel_lib    
+    gtest
+    gtest_main
 )
 
 add_test(NAME virtel_tests COMMAND virtel_tests)

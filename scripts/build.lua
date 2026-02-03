@@ -35,6 +35,12 @@ tasks["clean"] = function()
     run("rm -rf build")
 end
 
+tasks["rebuild"] = function()
+    tasks["clean"]()
+    tasks["configure"]()
+    tasks["build"]()
+end
+
 if not option or option == '' then
     print('Usage: lua ./scripts/build.lua [option]')
     print('Available tasks:')

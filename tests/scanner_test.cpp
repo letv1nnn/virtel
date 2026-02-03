@@ -12,7 +12,7 @@ std::vector<Token> get_tokens_from_source(const std::string &source) {
 
 void same_tokens(const std::vector<Token> &actual, const std::vector<Token> &expected) {
     std::size_t acc_size{actual.size()}, exp_size{expected.size()};
-    EXPECT_EQ(acc_size, exp_size)
+    ASSERT_EQ(acc_size, exp_size)
         << "The size of actual array of tokens differs from the size of expected (" << acc_size << " != " << exp_size << ")";
 
     for (std::size_t i{}; i < acc_size; ++i) {
