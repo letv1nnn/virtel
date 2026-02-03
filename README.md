@@ -1,6 +1,7 @@
-# VIRTEL
+# VIRTEL (WIP)
 
-I've read [Crafting Interpreters]("https://craftinginterpreters.com/") book by Bob Nystrom and rewrite the Lox interpreter in C++.
+VIRTEL is a C++ implementation of a Lox interpreter, inspired by the book [Crafting Interpreters](https://craftinginterpreters.com/) by Bob Nystrom.  
+It supports scanning, parsing, and interpreting Lox code, demonstrating core concepts of interpreters in C++.
 
 ## Build & Run
 
@@ -9,7 +10,7 @@ I've read [Crafting Interpreters]("https://craftinginterpreters.com/") book by B
 - GCC or Clang
 - Lua (for build scripts) (optional, since you can run raw cmake)
 
-#### ***Using Lua scripts***
+### ***Using Lua scripts***
 
 >NOTE: To see all available scripts, run the following command: `lua scripts/build.lua`.
 
@@ -33,7 +34,7 @@ lua scripts/build.lua clean
 lua scripts/build.lua test
 ```
 
-***Raw CMake***
+### ***Raw CMake***
 
 #### Build
 ```sh
